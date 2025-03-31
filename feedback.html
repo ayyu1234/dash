@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback - STAR ENGINEERING</title>
+    <link rel="icon" type="image/png" href="https://i.postimg.cc/28r6jmGb/image-4.png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+            padding-top: 100px;
+        }
+        .container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 400px;
+            margin: auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+        }
+        h2 {
+            color: darkred;
+        }
+        img {
+            width: 100px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            outline: none;
+            background: #f9f9f9;
+            color: #333;
+            display: block;
+            font-family: Arial, sans-serif;
+            box-sizing: border-box;
+        }
+        .stars {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 10px 0;
+        }
+        .star {
+            font-size: 30px;
+            cursor: pointer;
+            color: #ccc;
+            position: relative;
+        }
+        .star:hover, .star.active {
+            color: gold;
+        }
+        .star-number {
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 16px;
+            color: #333;
+        }
+        button {
+            background: darkred;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 100%;
+            font-weight: bold;
+            transition: all 0.3s ease-in-out;
+            box-sizing: border-box;
+        }
+        .thank-you {
+            display: none;
+            font-size: 18px;
+            font-weight: bold;
+            color: darkgreen;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="feedbackForm">
+        <img src="https://i.postimg.cc/28r6jmGb/image-4.png" alt="Star Engineering Logo">
+        <h2>Submit Your Feedback</h2>
+        <input type="text" id="companyName" placeholder="Company Name" required oninput="validateCompanyName()">
+        <input type="tel" id="phoneNumber" placeholder="Phone Number" required inputmode="numeric" oninput="validatePhone()" maxlength="10">
+        <input type="email" id="email" placeholder="Email ID" required oninput="validateForm()">
+        <div class="stars">
+            <span class="star" onclick="toggleStar(1)">★<div class="star-number">1</div></span>
+            <span class="star" onclick="toggleStar(2)">★<div class="star-number">2</div></span>
+            <span class="star" onclick="toggleStar(3)">★<div class="star-number">3</div></span>
+            <span class="star" onclick="toggleStar(4)">★<div class="star-number">4</div></span>
+            <span class="star" onclick="toggleStar(5)">★<div class="star-number">5</div></span>
+        </div>
+        <textarea id="feedback" placeholder="Your Feedback (Optional)"></textarea>
+        <button id="submitBtn" onclick="submitFeedback()" disabled>Submit Feedback</button>
+        <div class="thank-you" id="thankYouMessage">Thank you for your valuable feedback!</div>
+    </div>
+    <script>
+        let selectedStars = 0;
+        function toggleStar(rating) {
+            selectedStars = rating;
+            document.querySelectorAll('.star').forEach((star, index) => {
+                star.classList.toggle('active', index < rating);
+            });
+            validateForm();
+        }
+        function validateCompanyName() {
+            let companyInput = document.getElementById("companyName");
+            companyInput.value = companyInput.value.replace(/[^A-Za-z\s]/g, '');
+            validateForm();
+        }
+        function validatePhone() {
+            let phoneInput = document.getElementById("phoneNumber");
+            phoneInput.value = phoneInput.value.replace(/[^0-9]/g, '');
+            validateForm();
+        }
+        function validateForm() {
+            let companyName = document.getElementById("companyName").value.trim();
+            let phoneNumber = document.getElementById("phoneNumber").value.trim();
+            let email = document.getElementById("email").value.trim();
+            let submitBtn = document.getElementById("submitBtn");
+            const nameValid = /^[A-Za-z\s]+$/.test(companyName);
+            const phoneValid = /^[0-9]{10}$/.test(phoneNumber);
+            const emailValid = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);
+            submitBtn.disabled = !(nameValid && phoneValid && emailValid && selectedStars > 0);
+        }
+        function submitFeedback() {
+            document.getElementById("thankYouMessage").style.display = "block";
+        }
+    </script>
+</body>
+</html>

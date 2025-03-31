@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STAR ENGINEERING - Payment</title>
+    <link rel="icon" type="image/png" href="https://i.postimg.cc/28r6jmGb/image-4.png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f8f9fa;
+            text-align: center;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+        }
+        h2 {
+            color: #b30000;
+            margin-bottom: 20px;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+        .button {
+            background: white;
+            color: #b30000;
+            border: 2px solid #b30000;
+            padding: 5px 10px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+        .button:hover {
+            background: #b30000;
+            color: white;
+        }
+        .home-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: white;
+            color: #b30000;
+            border: 2px solid #b30000;
+            padding: 5px 10px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+        .home-button:hover {
+            background: #b30000;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="home-button">🏠 Home</a>
+    <h2>💳 Make a Payment</h2>
+    <div class="container">
+        <div class="button-container">
+            <a href="neft.html" class="button">🌐 NEFT/RTGS</a>
+            <a href="upi.html" class="button">💰 UPI</a>
+            <a href="cheque.html" class="button">📄 Cheque/DD</a>
+        </div>
+    </div>
+</body>
+</html>
